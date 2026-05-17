@@ -1,4 +1,4 @@
-baseURL = 'https://dedsec2026-writeup.vercel.app/'
+baseURL = 'https://dedsec2026-writeups.vercel.app/'
 languageCode = 'en-us'
 title = 'DEDSEC 2026 WRITEUP'
 theme = 'terminal'
