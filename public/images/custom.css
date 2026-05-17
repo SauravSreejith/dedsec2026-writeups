@@ -1,0 +1,35 @@
+/* 1. Force the theme to be Hacker Green just in case */
+:root {
+    --theme: #4ae173 !important; 
+}
+
+/* 2. Force the Bounding Box */
+.post.on-list {
+    border: 2px dashed var(--theme) !important;
+    padding: 25px !important;
+    margin-bottom: 40px !important;
+    background-color: rgba(0, 255, 0, 0.03) !important;
+}
+
+/* 3. Force the Read More link to look like a Button */
+.post.on-list a {
+    display: inline-block !important;
+    margin-top: 15px !important;
+    font-weight: bold !important;
+    color: #000 !important;
+    background-color: var(--theme) !important;
+    border: 1px solid var(--theme) !important;
+    padding: 8px 15px !important;
+    text-decoration: none !important;
+}
+
+/* Button Hover Effect */
+.post.on-list a:hover {
+    background-color: transparent !important;
+    color: var(--theme) !important;
+}
+
+/* Hides the hardcoded "Theme made by panr" text in the footer */
+.copyright span:last-child {
+    display: none !important;
+}

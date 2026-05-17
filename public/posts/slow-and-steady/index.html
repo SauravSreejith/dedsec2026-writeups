@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Slow and Steady Wins the Race :: DEDSEC 2026 WRITEUP</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Category: Steganography / Audio Forensics
+Difficulty: Easy
+Author: Saurav Sreejith
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/posts/slow-and-steady/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Slow and Steady Wins the Race">
+<meta property="og:description" content="Category: Steganography / Audio Forensics
+Difficulty: Easy
+Author: Saurav Sreejith
+" />
+<meta property="og:url" content="http://localhost:1313/posts/slow-and-steady/" />
+<meta property="og:site_name" content="DEDSEC 2026 WRITEUP" />
+
+  <meta property="og:image" content="http://localhost:1313/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2024-05-20 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    DEDSEC_WRITEUPS
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/posts/">All Writeups</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/posts/" >All Writeups</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/slow-and-steady/">Slow and Steady Wins the Race</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2024-05-20</time></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p><strong>Category:</strong> Steganography / Audio Forensics<br>
+<strong>Difficulty:</strong> Easy<br>
+<strong>Author:</strong> Saurav Sreejith</p>
+<h2 id="-challenge-description">📝 Challenge Description<a href="#-challenge-description" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<blockquote>
+<p><code>$can you fix the broken?</code>
+<code>$can you feel my heart?</code></p>
+</blockquote>
+<p><strong>Attached File:</strong> <code>chad.wav</code></p>
+<hr>
+<h2 id="-solution-walkthrough">🕵️‍♂️ Solution Walkthrough<a href="#-solution-walkthrough" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="step-1-analyzing-the-clues--the-audio">Step 1: Analyzing the Clues &amp; The Audio<a href="#step-1-analyzing-the-clues--the-audio" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>We are given an audio file named <code>chad.wav</code>. Listening to the file, we hear absolute silence for the first few seconds, followed immediately by harsh, rhythmic, robotic screeching and beeping sounds.</p>
+<p>Before we jump into tools, let&rsquo;s look at the hints provided by the challenge creator:</p>
+<ol>
+<li><strong>The Title:</strong> &ldquo;<em>Slow</em> and steady&hellip;&rdquo;</li>
+<li><strong>The Description:</strong> The unusual use of the dollar sign in <code>$</code>can points us toward the word <strong>&ldquo;scan&rdquo;</strong>.</li>
+<li><strong>The Lore:</strong> The text &ldquo;can you fix the broken, can you feel my heart&rdquo; are lyrics from a Bring Me The Horizon song heavily associated with the &ldquo;Gigachad&rdquo; internet meme, perfectly matching our filename (<code>chad.wav</code>).</li>
+</ol>
+<p>Combining <strong>&ldquo;Slow&rdquo;</strong> and <strong>&ldquo;Scan&rdquo;</strong> with the robotic sounds, we can confidently identify this as <strong>SSTV (Slow-Scan Television)</strong>, a method used by radio amateurs to transmit and receive static pictures via audio.</p>
+<h3 id="step-2-the-twist-evading-standard-readers">Step 2: The Twist (Evading Standard Readers)<a href="#step-2-the-twist-evading-standard-readers" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Normally, to decode SSTV, you pipe the audio into software like RX-SSTV (Windows), QSSTV (Linux), or a mobile app.</p>
+<p>However, participants who tried to auto-decode this file likely got nothing but a blank screen. Why?
+Standard SSTV audio starts with a specific calibration header (known as the VIS code) that tells the software exactly what mode (e.g., Martin M1, Scottie 1) the image is transmitted in so it can auto-sync. The creator intentionally padded the beginning of the audio with silence, effectively stripping out these headers to break standard auto-detecting readers!</p>
+<h3 id="step-3-decoding-in-raw-mode">Step 3: Decoding in Raw Mode<a href="#step-3-decoding-in-raw-mode" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>To bypass this trick, we need an SSTV decoder that allows us to force-read the audio stream without relying on the missing headers.</p>
+<p>A highly effective tool for this is the <strong>Robot36</strong> app (available on Android).</p>
+<ol>
+<li>Open Robot36.</li>
+<li>Go to settings and enable <strong>Raw Mode</strong> (or manually select a common SSTV mode like Scottie 1 / Martin 1 depending on the encoding).</li>
+<li>Play the <code>chad.wav</code> audio out loud from a computer speaker directly into the phone&rsquo;s microphone.</li>
+</ol>
+<p>Because Raw Mode forces the app to listen to the audio regardless of the missing calibration header, it begins painting the image line by line.</p>
+<p>As the screeching finishes, an image (likely of the Gigachad himself) is decoded on our screen, with the flag written across it.</p>
+<p><img src="/images/sstv.png" alt="sstv"></p>
+<hr>
+<h2 id="-flag">🚩 Flag<a href="#-flag" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DEDSEC{4N4L0G_H1D3_4ND_S33K}
+</span></span></code></pre></div>
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

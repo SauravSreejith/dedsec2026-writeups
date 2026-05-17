@@ -1,0 +1,25 @@
+baseURL = 'https://dedsec2026-writeup.vercel.app/'
+languageCode = 'en-us'
+title = 'DEDSEC 2026 WRITEUP'
+theme = 'terminal'
+paginate = 10
+
+[params]
+  centerTheme = true 
+  themeColor = 'green' 
+  showMenu = true
+  showFullContent = false 
+  # This fixes the empty [] brackets!
+  readMore = "Read Full Writeup" 
+  # Added the leading slash so it actually loads!
+  customCSS = ["/custom.css"]
+
+[params.logo]
+  logoText = "DEDSEC_WRITEUPS"
+  logoHomeLink = "/"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "All Writeups"
+    url = "/posts/"

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DEDSEC 2026 WRITEUP</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on DEDSEC 2026 WRITEUP</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>All Roads Lead to Rome</title>
+      <link>http://localhost:1313/posts/all-roads/</link>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/all-roads/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Category:&lt;/strong&gt; OSINT&lt;br&gt;&#xA;&lt;strong&gt;Difficulty:&lt;/strong&gt; Easy&lt;br&gt;&#xA;&lt;strong&gt;Author:&lt;/strong&gt; Saurav Sreejith&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTML Homework</title>
+      <link>http://localhost:1313/posts/html_homework/</link>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/html_homework/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Category:&lt;/strong&gt; Web / Crypto&lt;br&gt;&#xA;&lt;strong&gt;Difficulty:&lt;/strong&gt; Easy&lt;br&gt;&#xA;&lt;strong&gt;Author:&lt;/strong&gt; Saurav Sreejith&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Slow and Steady Wins the Race</title>
+      <link>http://localhost:1313/posts/slow-and-steady/</link>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/slow-and-steady/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Category:&lt;/strong&gt; Steganography / Audio Forensics&lt;br&gt;&#xA;&lt;strong&gt;Difficulty:&lt;/strong&gt; Easy&lt;br&gt;&#xA;&lt;strong&gt;Author:&lt;/strong&gt; Saurav Sreejith&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>THE PRIME SUSPECT</title>
+      <link>http://localhost:1313/posts/prime-suspect/</link>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/prime-suspect/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Category:&lt;/strong&gt; Forensics / Steganography / Scripting&lt;br&gt;&#xA;&lt;strong&gt;Difficulty:&lt;/strong&gt; Hard&lt;br&gt;&#xA;&lt;strong&gt;Author:&lt;/strong&gt; Saurav Sreejith&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Well Well Well</title>
+      <link>http://localhost:1313/posts/wellwellwell/</link>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/wellwellwell/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Category:&lt;/strong&gt; Forensics / Steganography&lt;br&gt;&#xA;&lt;strong&gt;Difficulty:&lt;/strong&gt; Easy&lt;br&gt;&#xA;&lt;strong&gt;Author:&lt;/strong&gt; Saurav Sreejith&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Yapcord</title>
+      <link>http://localhost:1313/posts/yapcord/</link>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/yapcord/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Category:&lt;/strong&gt; Web / Steganography&lt;br&gt;&#xA;&lt;strong&gt;Difficulty:&lt;/strong&gt; Easy&lt;br&gt;&#xA;&lt;strong&gt;Author:&lt;/strong&gt; Saurav Sreejith&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

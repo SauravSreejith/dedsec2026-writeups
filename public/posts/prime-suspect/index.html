@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>THE PRIME SUSPECT :: DEDSEC 2026 WRITEUP</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Category: Forensics / Steganography / Scripting
+Difficulty: Hard
+Author: Saurav Sreejith
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/posts/prime-suspect/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="THE PRIME SUSPECT">
+<meta property="og:description" content="Category: Forensics / Steganography / Scripting
+Difficulty: Hard
+Author: Saurav Sreejith
+" />
+<meta property="og:url" content="http://localhost:1313/posts/prime-suspect/" />
+<meta property="og:site_name" content="DEDSEC 2026 WRITEUP" />
+
+  <meta property="og:image" content="http://localhost:1313/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2024-05-20 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    DEDSEC_WRITEUPS
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/posts/">All Writeups</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/posts/" >All Writeups</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/prime-suspect/">THE PRIME SUSPECT</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2024-05-20</time></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p><strong>Category:</strong> Forensics / Steganography / Scripting<br>
+<strong>Difficulty:</strong> Hard<br>
+<strong>Author:</strong> Saurav Sreejith</p>
+<h2 id="-challenge-description">📝 Challenge Description<a href="#-challenge-description" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>We are provided with a zip file containing the remnants of a suspect&rsquo;s digital footprint. According to the <code>CASE_1866_NOTES.txt</code>, the suspect initiated a wipe, causing severe logical damage. We are tasked with analyzing the recovered artifacts for actionable intelligence.</p>
+<p><strong>Contents:</strong></p>
+<ul>
+<li><code>ambulance.jpg</code></li>
+<li><code>browser_history.csv</code></li>
+<li><code>config.ini</code></li>
+<li><code>notes.txt</code></li>
+<li><code>bash_history_recovered.log</code></li>
+<li><code>CASE_1866_NOTES.txt</code></li>
+<li><code>crime_and_punishment.txt</code></li>
+</ul>
+<hr>
+<h2 id="-solution-walkthrough">🕵️‍♂️ Solution Walkthrough<a href="#-solution-walkthrough" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="step-1-triage-and-red-herrings">Step 1: Triage and Red Herrings<a href="#step-1-triage-and-red-herrings" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Upon extracting the archive, we see a variety of files. Looking through <code>bash_history</code>, <code>browser_history</code>, <code>notes.txt</code>, and <code>config.ini</code> paints a great lore picture (searching for bleach, deleting ledgers, reading about the statute of limitations for homicide), but forensically, these are <strong>red herrings</strong>.</p>
+<p>The actual anomalies lie in two files: <code>ambulance.jpg</code> and <code>crime_and_punishment.txt</code>.</p>
+<h3 id="step-2-the-exif-breadcrumbs">Step 2: The EXIF Breadcrumbs<a href="#step-2-the-exif-breadcrumbs" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Let&rsquo;s analyze <code>ambulance.jpg</code>. It&rsquo;s a picture of an ambulance seen through a rearview mirror. Let&rsquo;s check the metadata using <code>exiftool</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>└─<span style="color:#f92672">[</span>$<span style="color:#f92672">]</span> &lt;&gt; exiftool ambulance.jpg
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>Software                        : 4-Byte Header Studio 24.3
+</span></span><span style="display:flex;"><span>Image Unique ID                 : <span style="color:#ae81ff">0203050711131719</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Three massive clues are hidden here:</p>
+<ol>
+<li><strong>The Image Unique ID (<code>0203050711131719</code>):</strong> If we break this string apart, we get <code>02, 03, 05, 07, 11, 13, 17, 19</code>. This is the mathematical sequence of <strong>Prime Numbers</strong>. This also ties into the challenge title: &ldquo;The <em>Prime</em> Suspect&rdquo;.</li>
+<li><strong>The Subject (Ambulance in a mirror):</strong> The word &ldquo;AMBULANCE&rdquo; is famously printed backwards on vehicles so it can be read in a rearview mirror. This hints at a <strong>Reverse</strong> or <strong>Backwards</strong> operation.</li>
+<li><strong>The Software (<code>4-Byte Header</code>):</strong> This hints that whatever data we extract will begin with a 4-byte size header.</li>
+</ol>
+<p><img src="/images/ambulance.jpg" alt="alt text"></p>
+<h3 id="step-3-analyzing-the-text-file">Step 3: Analyzing the Text File<a href="#step-3-analyzing-the-text-file" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Now we turn to <code>crime_and_punishment.txt</code>, a massive file containing the classic novel. When trying to open it in a standard text editor, we get a warning:</p>
+<p><img src="/images/error.png" alt="alt text"></p>
+<p>Text editors expect valid text encoding (like ASCII or UTF-8). If they encounter raw binary bytes (<code>\x00</code>, <code>\x89</code>, etc.), they throw errors. This means binary data is stuffed inside the text. Let&rsquo;s look at a Hex Dump of the first few lines:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>00000000: 6372 496d 4520 614e 6420 7055 6e49 7368  crImE aNd pUnIsh
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>00000050: 4a55 6c59 2061 2089 4f75 6e47 206d 614e  JUlY a .OunG maN
+</span></span><span style="display:flex;"><span>00000060: 2043 414d 4520 6f50 744e 6f66 2074 4865   CAME oPtNof tHe
+</span></span><span style="display:flex;"><span>00000070: 2067 6152 7245 7420 494e 2057 6869 6348   gaRrEt IN WhicH
+</span></span><span style="display:flex;"><span>00000080: 2048 6520 6c4f 6467 4544 2047 6e20 532e   He lOdgED Gn S.
+</span></span></code></pre></div><p>If we carefully isolate the non-printable and out-of-place characters, a pattern emerges:</p>
+<ul>
+<li>At <code>00000050</code>, there is an <code>89</code>.</li>
+<li>At <code>00000060</code>, the letters <code>P</code> and <code>N</code> replace normal characters.</li>
+<li>At <code>00000080</code>, the letter <code>G</code> appears out of nowhere.</li>
+</ul>
+<p><code>89 50 4E 47</code> is the magic byte signature for a <strong>PNG Image</strong>. Following closely behind, we can also spot <code>49 48 44 52</code> (the <code>IHDR</code> chunk). A PNG file has been shattered into pieces and scattered byte-by-byte throughout the novel!</p>
+<h3 id="step-4-the-extraction-logic">Step 4: The Extraction Logic<a href="#step-4-the-extraction-logic" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>How do we know <em>which</em> indices hold the hidden PNG bytes? Let&rsquo;s combine our clues from Step 2:</p>
+<ul>
+<li><strong>Primes:</strong> The bytes are hidden at prime number indices.</li>
+<li><strong>Reverse (Ambulance):</strong> The indices are calculated backwards from the end of the file.</li>
+</ul>
+<p>Therefore, the exact position of the hidden bytes is: <code>File Size - Prime Number</code>.
+Additionally, the EXIF data hinted at a <strong>&ldquo;4-Byte Header&rdquo;</strong>, meaning the first 4 bytes we extract will tell us the exact size of the payload.</p>
+<p>We can write a Python script to sieve for primes, calculate the reverse positions, read the 4-byte header, and extract the hidden PNG:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate prime numbers up to n using the Sieve of Eratosthenes</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">primes_upto</span>(n):
+</span></span><span style="display:flex;"><span>    sieve <span style="color:#f92672">=</span> bytearray(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x01</span><span style="color:#e6db74">&#34;</span>) <span style="color:#f92672">*</span> (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    sieve[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00\x00</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(math<span style="color:#f92672">.</span>sqrt(n)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> sieve[i]:
+</span></span><span style="display:flex;"><span>            sieve[i<span style="color:#f92672">*</span>i:n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:i] <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> len(sieve[i<span style="color:#f92672">*</span>i:n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:i])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">if</span> sieve[i]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">extract</span>(embedded_path, output_path):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(embedded_path, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        story <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    file_size <span style="color:#f92672">=</span> len(story)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Recreate the exact position array: (Total Size - Prime)</span>
+</span></span><span style="display:flex;"><span>    primes <span style="color:#f92672">=</span> primes_upto(file_size)
+</span></span><span style="display:flex;"><span>    positions <span style="color:#f92672">=</span> sorted([file_size <span style="color:#f92672">-</span> p <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> primes <span style="color:#66d9ef">if</span> file_size <span style="color:#f92672">-</span> p <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. Extract the first 4 bytes to read the size header</span>
+</span></span><span style="display:flex;"><span>    header_bytes <span style="color:#f92672">=</span> bytearray()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>):
+</span></span><span style="display:flex;"><span>        header_bytes<span style="color:#f92672">.</span>append(story[positions[i]])
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Decode the Big-Endian 4-byte integer to get payload size</span>
+</span></span><span style="display:flex;"><span>    payload_size <span style="color:#f92672">=</span> int<span style="color:#f92672">.</span>from_bytes(header_bytes, byteorder<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;big&#39;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[*] Detected 4-Byte Header...&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[*] Payload size to extract: </span><span style="color:#e6db74">{</span>payload_size<span style="color:#e6db74">}</span><span style="color:#e6db74"> bytes&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. Extract the actual hidden PNG based on the size</span>
+</span></span><span style="display:flex;"><span>    payload <span style="color:#f92672">=</span> bytearray()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span> <span style="color:#f92672">+</span> payload_size):
+</span></span><span style="display:flex;"><span>        payload<span style="color:#f92672">.</span>append(story[positions[i]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Save to disk</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(output_path, <span style="color:#e6db74">&#34;wb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        f<span style="color:#f92672">.</span>write(payload)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[*] Extraction complete! Saved to </span><span style="color:#e6db74">{</span>output_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>extract(<span style="color:#e6db74">&#34;crime_and_punishment.txt&#34;</span>, <span style="color:#e6db74">&#34;recovered_data.png&#34;</span>)
+</span></span></code></pre></div><h3 id="step-5-bit-plane-steganography">Step 5: Bit Plane Steganography<a href="#step-5-bit-plane-steganography" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Running the script successfully extracts <code>recovered_data.png</code>. However, when we open the image, it appears to be completely solid black.</p>
+<p><img src="/images/recovered_data.png" alt="alt text"></p>
+<p>This is a classic CTF steganography trick. The image isn&rsquo;t actually a single solid color; it contains a QR code drawn with colors that are only 1 bit apart in value (e.g., <code>#000000</code> vs <code>#010101</code>). To the human eye, it looks blank.</p>
+<p>We can analyze the image using a tool like <strong>StegSolve</strong> (a Java-based image analysis tool) or <code>zsteg</code>.
+By opening the image in StegSolve and clicking the forward arrow to cycle through the color planes, we isolate the Least Significant Bits (LSB). When we reach <code>Red plane 0</code> or <code>Green plane 0</code>, the subtle differences in pixel values are highlighted in high contrast, revealing a perfectly intact <strong>QR Code</strong>.</p>
+<p><img src="/images/solved.png" alt="alt text"></p>
+<h3 id="step-6-capturing-the-flag">Step 6: Capturing the Flag<a href="#step-6-capturing-the-flag" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Scanning the revealed QR code using a phone or decoding software gives us the final flag.</p>
+<hr>
+<h2 id="-flag">🚩 Flag<a href="#-flag" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DEDSEC{TH3_4X3_MURD3R}
+</span></span></code></pre></div>
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Yapcord :: DEDSEC 2026 WRITEUP</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Category: Web / Steganography
+Difficulty: Easy
+Author: Saurav Sreejith
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/posts/yapcord/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Yapcord">
+<meta property="og:description" content="Category: Web / Steganography
+Difficulty: Easy
+Author: Saurav Sreejith
+" />
+<meta property="og:url" content="http://localhost:1313/posts/yapcord/" />
+<meta property="og:site_name" content="DEDSEC 2026 WRITEUP" />
+
+  <meta property="og:image" content="http://localhost:1313/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2024-05-20 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    DEDSEC_WRITEUPS
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/posts/">All Writeups</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/posts/" >All Writeups</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/yapcord/">Yapcord</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2024-05-20</time></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p><strong>Category:</strong> Web / Steganography<br>
+<strong>Difficulty:</strong> Easy<br>
+<strong>Author:</strong> Saurav Sreejith</p>
+<h2 id="-challenge-description">📝 Challenge Description<a href="#-challenge-description" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<blockquote>
+<p>Man they really made a discord clone, it&rsquo;s filled with a bunch of weirdos.</p>
+<p><code>https://yapcord.vercel.app/</code></p>
+</blockquote>
+<hr>
+<h2 id="-solution-walkthrough">🕵️‍♂️ Solution Walkthrough<a href="#-solution-walkthrough" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="step-1-web-reconnaissance--the-network-tab">Step 1: Web Reconnaissance &amp; The Network Tab<a href="#step-1-web-reconnaissance--the-network-tab" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p><img src="/images/yapcord.png" alt="yapcord"></p>
+<p>Visiting the provided link, we are greeted with &ldquo;Yapcord,&rdquo; a simulated chatroom filled with various eccentric characters spamming messages.</p>
+<p>We have a few ways to analyze the chat:</p>
+<ol>
+<li><strong>The Slow Way:</strong> Sit and read the messages as they appear on the screen, hoping to spot a clue.</li>
+<li><strong>The Hacker Way:</strong> Open Developer Tools (<code>F12</code>), navigate to the <strong>Network</strong> tab, and refresh the page. We can immediately spot the frontend fetching a file called <code>chat.json</code> to populate the chatroom. <em>(Alternatively, participants could use directory fuzzing tools like DirBuster or ffuf to discover the <code>/chat.json</code> endpoint).</em></li>
+</ol>
+<p><img src="/images/chat.png" alt="chat"></p>
+<p>Looking directly at the <code>chat.json</code> response, we get the full, unredacted list of every user and their automated messages.</p>
+<h3 id="step-2-following-the-clues">Step 2: Following the Clues<a href="#step-2-following-the-clues" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Scanning through the <code>chat.json</code> data, we can notice a recurring theme hidden among the spam. Several different bots specifically mention &ldquo;grass&rdquo;:</p>
+<ul>
+<li><strong>Conspiracy_Carl:</strong> <em>&ldquo;who is Grass really?&rdquo;, &ldquo;the grass is a plant&hellip; literally&rdquo;</em></li>
+<li><strong>xX_Shadow_Edge_Xx:</strong> <em>&ldquo;touch some grass Shadow says&rdquo;</em></li>
+<li><strong>Toxic_Avenger:</strong> <em>&ldquo;wait, the grass is right there&rdquo;</em></li>
+<li><strong>AI_Overlord_2045:</strong> <em>&ldquo;GRASS IS 99% GREEN&rdquo;</em></li>
+</ul>
+<p>This heavily implies that the user named <strong>&ldquo;Grass&rdquo;</strong> is our target.</p>
+<h3 id="step-3-inspecting-the-avatar">Step 3: Inspecting the Avatar<a href="#step-3-inspecting-the-avatar" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Let&rsquo;s look at the profile picture for the Grass user (<code>grass.png</code>). At first glance, it looks like a piece of abstract pixel art—a brown background scattered with seemingly random green pixels.</p>
+<p><img src="/images/grass.png" alt="grass"></p>
+<p>However, looking closely at the pixel distribution, the chaotic layout of the green pixels looks suspiciously similar to the data matrix of a <strong>QR Code</strong>. The only problem? It&rsquo;s missing the three large, distinct square boxes in the corners (known as &ldquo;Finder Patterns&rdquo;) that allow a camera or software to recognize it as a QR code.</p>
+<h3 id="step-4-reconstructing-the-qr-code">Step 4: Reconstructing the QR Code<a href="#step-4-reconstructing-the-qr-code" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Because the finder patterns are missing, standard QR scanners will completely ignore the image. We need to play the role of a digital artist and fix it.</p>
+<ol>
+<li>Download <code>grass.png</code> and open it in any image editing software (Photoshop, GIMP, Photopea, or even MS Paint).</li>
+<li>A standard QR code requires three positional squares located at the <strong>Top-Left</strong>, <strong>Top-Right</strong>, and <strong>Bottom-Left</strong> corners.</li>
+<li>You can manually draw these boxes (a dark outer square, a light inner boundary, and a dark center square), or simply search Google Images for a &ldquo;blank QR code&rdquo;, copy the three corner squares, and paste them perfectly over the corners of <code>grass.png</code>.</li>
+</ol>
+<h3 id="step-5-scanning-for-the-flag">Step 5: Scanning for the Flag<a href="#step-5-scanning-for-the-flag" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Once the three corner boxes are restored, the image transforms back into a valid, readable QR code.</p>
+<p><img src="/images/grass-fixed.png" alt="grass-fixed"></p>
+<p>Scanning the newly fixed image with a phone camera or an online QR code reader instantly decodes the hidden text, revealing the flag!</p>
+<hr>
+<h2 id="-flag">🚩 Flag<a href="#-flag" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DEDSEC{p1c4ss0_0f_qr_c0d3s}
+</span></span></code></pre></div>
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
